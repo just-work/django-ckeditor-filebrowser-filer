@@ -14,6 +14,8 @@ CKEDITOR.plugins.setLang( 'filerimage', 'en', {
 	url: 'URL',
 	caption: 'Caption',
 	useOriginal: 'Use original image',
+  withWrapper: 'С оберткой',
+  maxWidth: 'Максимальная ширина (сотрите значение если изображение не должно быть ограничено)',
 	crop: 'Crop',
 	upscale: 'Upscale',
 	autoscale: 'Autoscale',

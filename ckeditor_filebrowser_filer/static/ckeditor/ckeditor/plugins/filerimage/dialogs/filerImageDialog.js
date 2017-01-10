@@ -132,6 +132,38 @@
 		];
 
 		var extra_items = [
+      {
+        type: 'hbox',
+        widths: ['25%', '25%', '50%'],
+        children: [
+          {
+            type: 'checkbox',
+            id: 'with_wrapper',
+            label: lang.withWrapper,
+            'default': true,
+            setup: function (element) {
+              this.setValue(element.getAttribute('with_wrapper'));
+            },
+            // Called by the main commitContent call on dialog confirmation.
+            commit: function (element) {
+              element.setAttribute('with_wrapper', this.getValue());
+            }
+          },
+          {
+            type: 'text',
+            id: 'max_width',
+            label: lang.withWrapper,
+            'default': '770px',
+            setup: function (element) {
+              this.setValue(element.getAttribute('max_width'));
+            },
+            // Called by the main commitContent call on dialog confirmation.
+            commit: function (element) {
+              element.setAttribute('max_width', this.getValue());
+            }
+          },
+        ]
+      },
 			{
 				type: 'hbox',
 				widths: [ '33%', '33%', '33%' ],
@@ -351,8 +383,22 @@
 				this.commitContent(img);
 
 				// Finally, in if insert mode, inserts the element at the editor caret position.
-				if (this.insertMode)
-					editor.insertElement(img);
+			  if (this.insertMode) {
+          if (img.getAttribute('with_wrapper')) {
+            var img_wrapper = document.createElement('div');
+            img_wrapper.addClass("text-page__image");
+
+            img_wrapper.setStyle('max-width', img.getAttribute('max_width') || 'initial')
+
+            img_wrapper.append(img);
+            var sign = document.createElement('span');
+            sign.innerText = img.getAttribute('title')
+            img_wrapper.append(sign);
+
+            img = img_wrapper;
+          }
+			    editor.insertElement(img);
+        }
 			},
 
 			contents: [

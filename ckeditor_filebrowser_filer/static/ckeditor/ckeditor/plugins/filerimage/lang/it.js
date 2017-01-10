@@ -10,6 +10,8 @@
 	url: 'URL',
 	caption: 'Didascalia',
 	useOriginal: 'Usa immagine originale',
+  withWrapper: 'С оберткой',
+  maxWidth: 'Максимальная ширина (сотрите значение если изображение не должно быть ограничено)',
 	crop: 'Ritaglia',
 	upscale: 'Ingrandisci',
 	autoscale: 'Riscalatura automatica',
