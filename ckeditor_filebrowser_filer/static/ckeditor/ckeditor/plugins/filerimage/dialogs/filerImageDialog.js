@@ -152,7 +152,7 @@
           {
             type: 'text',
             id: 'max_width',
-            label: lang.withWrapper,
+            label: lang.maxWidth,
             'default': '770px',
             setup: function (element) {
               this.setValue(element.getAttribute('max_width'));
@@ -392,7 +392,8 @@
 
             img_wrapper.append(img);
             var sign = document.createElement('span');
-            sign.innerText = img.getAttribute('title')
+            sign.setText(img.getAttribute('title'));
+            sign.addClass("title");
             img_wrapper.append(sign);
 
             img = img_wrapper;
